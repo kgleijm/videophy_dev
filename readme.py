@@ -5,7 +5,6 @@ Videophy is a small tool to easily convert single images to a video format
 
 # We start by importing the necessary modules
 import os
-
 from videophy import Video
 from PIL import Image, ImageDraw, ImageColor
 import random as r
@@ -50,11 +49,3 @@ for i in range(videoLength * fps):
 video.release()
 
 # Now you'll find a video on your desktop of changing colors, i'm sure there are way more interesting applications
-
-
-
-
-
-
-
-

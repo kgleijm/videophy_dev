@@ -1,9 +1,7 @@
 # import needed libraries
-import sys
 import os
-
-# pip install packages if needed
 import numpy
+
 
 try:
     from cv2 import cv2
