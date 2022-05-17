@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw, ImageColor
 import random as r
 
 # For the sake of this tutorial we have some parameters to play with
-fps = 30
+fps = 60
 videoLength = 30
 videoName = "exampleVideo"
 outputFolder = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
@@ -27,8 +27,15 @@ color = [r.randint(0, 256) for i in range(3)]
 
 
 # Multiplying the frames per second times the amount of seconds give us how many frames we should be rendering
+lastPercentage = 0
 for i in range(videoLength * fps):
     # Render a simple image
+
+    # print progress for longer renders
+    percentage = int(i/(videoLength * fps)*100)
+    if percentage > lastPercentage:
+        lastPercentage = percentage
+        print(f"{percentage}%")
 
     # first we randomly change our color a bit
     color = [channel + r.choice((-colorChangeSpeed, colorChangeSpeed)) for channel in color]
