@@ -1,9 +1,9 @@
 
 """
-Videophy is a small to to easily convert single images to a video format
+Videophy is a small tool to easily convert single images to a video format
 """
 
-# we start by importing the necessary modules
+# We start by importing the necessary modules
 import os
 
 from videophy import Video
@@ -12,10 +12,10 @@ import random as r
 
 # For the sake of this tutorial we have some parameters to play with
 fps = 60
-videoLength = 30
+videoLength = 3200
 videoName = "exampleVideo"
 outputFolder = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
-colorChangeSpeed = 10
+colorChangeSpeed = 5
 size = (300, 300)
 
 # Create the video object that is going to export to the desktop,
@@ -31,25 +31,25 @@ lastPercentage = 0
 for i in range(videoLength * fps):
     # Render a simple image
 
-    # print progress for longer renders
+    # Print progress for longer renders
     percentage = int(i/(videoLength * fps)*100)
     if percentage > lastPercentage:
         lastPercentage = percentage
         print(f"{percentage}%")
 
-    # first we randomly change our color a bit
+    # First we randomly change our color a bit
     color = [channel + r.choice((-colorChangeSpeed, colorChangeSpeed)) for channel in color]
 
-    # make an image with our new color
+    # Make an image with our new color
     image = Image.new("RGB", size, tuple(color))
 
-    # add the image (frame) to the video
+    # Add the image (frame) to the video
     video.addFrame(image)
 
-# release the video
+# Release the video
 video.release()
 
-# now you'll find a video on your screen of changing colors, i'm sure  there are way more interesting applications
+# Now you'll find a video on your desktop of changing colors, i'm sure there are way more interesting applications
 
 
 
