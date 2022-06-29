@@ -1,4 +1,15 @@
 # import needed libraries
+
+"""
+If you are using opencv-python version 4.6.0.66,
+try to downgrade to 4.5.5.64 version,
+you can do that by go to
+File->Setting->Python Interpreter->
+Double-click on opencv-python version->
+check the specify version box, then choose older version(4.5.5.64).
+"""
+
+
 import os
 import numpy
 
@@ -58,3 +69,15 @@ class Video:
         cv2.destroyAllWindows()
         self.videoWriter.release()
         print("Released video to: " + self.getFileName())
+
+
+class Stream:
+
+    def __init__(self):
+        pass
+
+    def newFrame(self, frame):
+        cv2.imshow("Stream", numpy.array(frame))
+        cv2.waitKey(16)
+
+

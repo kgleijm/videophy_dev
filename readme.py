@@ -3,9 +3,19 @@
 Videophy is a small tool to easily convert single images to a video format
 """
 
+"""
+If you are using opencv-python version 4.6.0.66,
+try to downgrade to 4.5.5.64 version,
+you can do that by go to
+File->Setting->Python Interpreter->
+Double-click on opencv-python version->
+check the specify version box, then choose older version(4.5.5.64).
+"""
+
+
 # We start by importing the necessary modules
 import os
-from videophy import Video
+from videophy import Video, Stream
 from PIL import Image, ImageDraw, ImageColor
 import random as r
 
@@ -20,6 +30,7 @@ size = (300, 300)
 # Create the video object that is going to export to the desktop,
 # the rest of the keyword arguments are optional
 video = Video(outputFolder, name=videoName, fps=fps)
+stream = Stream()
 
 # Lastly a list that's going to represent the color we will be using during this example
 color = [r.randint(0, 256) for i in range(3)]
@@ -44,6 +55,7 @@ for i in range(videoLength * fps):
 
     # Add the image (frame) to the video
     video.addFrame(image)
+    #stream.newFrame(image)
 
 # Release the video
 video.release()
